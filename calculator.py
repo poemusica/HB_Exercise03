@@ -4,64 +4,29 @@ calculator.py
 Take prefix based input and perform appropriate calculations.
 """
 
-def add(tokens):
-    num1 = int(tokens[1])
-    try:
-        num2 = int(tokens[2])
-        return num1 + num2
-    except:
-        return "I don't understand."
+def add(num1, num2):
+    return num1 + num2
 
-def subtract(tokens):
-    num1 = int(tokens[1])
-    try:
-        num2 = int(tokens[2])
-        return num1 - num2
-    except:
-        return "I don't understand."
+def subtract(num1, num2):
+    return num1 - num2
 
-def multiply(tokens):
-    num1 = int(tokens[1])
-    try:
-        num2 = int(tokens[2])
-        return num1 * num2
-    except:
-        return "I don't understand."
+def multiply(num1, num2):
+    return num1 * num2
 
-def divide(tokens):
-    num1 = float(tokens[1])
-    try:
-        num2 = int(tokens[2])
-        return num1 / num2
-    except:
-        return "I don't understand."
+def divide(num1, num2):
+    return num1 / num2
 
-def mod(tokens):
-    num1 = int(tokens[1])
-    try:
-        num2 = int(tokens[2])
-        return num1 % num2
-    except:
-        return "I don't understand."
-
-def square(tokens):
-    # ignore if user entered more than one operand.
-    num1 = int(tokens[1])
+def square(num1):
     return num1 ** 2
 
-def cube(tokens):
-    # ignore if user entered more than one operand.
-    num1 = int(tokens[1])
+def cube(num1):
     return num1 ** 3
 
-def pow(tokens):
-    # ignore if user entered more than one operand.
-    num1 = int(tokens[1])
-    try:
-        num2 = int(tokens[2])
-        return num1 ** num2
-    except:
-        return "I don't understand."
+def power(num1, num2):
+    return num1 ** num2
+
+def mod(num1, num2):
+    return num1 % num2
 
 def main():
     # List of operators that this program accepts.
@@ -99,31 +64,38 @@ def main():
             print "I don't understand."
             continue
 
+        num1 = float(tokens[1])
+        if len(tokens) > 2:
+              num2 = float(tokens[2])
+        else:
+            # set empty num2 to 1 to prevent divide by zero error
+            num2 = 1
+
 
         # Test operator and call appropriate function
         if operator == "square":
-            print square(tokens)
+            print square(num1, num2)
 
         if operator == "+":
-            print add(tokens)
+            print add(num1, num2)
 
         if operator == "-":
-            print subtract(tokens)
+            print subtract(num1, num2)
 
         if operator == "*":
-            print multiply(tokens)
+            print multiply(num1, num2)
 
         if operator == "/":
-            print divide(tokens)
+            print divide(num1, num2)
 
         if operator == "mod":
-            print mod(tokens)
+            print mod(num1, num2)
 
         if operator == "cube":
-            print cube(tokens)
+            print cube(num1, num2)
 
         if operator == "pow":
-            print pow(tokens)
+            print pow(num1, num2)
 
 
 
